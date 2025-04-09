@@ -1,0 +1,2474 @@
+info:
+  description: BFF NEM API Documentation
+  title: BFF NEM
+  version: 0.0.0
+tags:
+  - name: v1.circuits
+  - name: v1.racks
+  - name: v1.resource
+  - name: v1.categories
+  - name: v1.devices
+  - name: v1.sites
+  - name: v1.location
+  - name: v1.entityUrl
+components:
+  securitySchemes:
+    myBasicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    DbMixinList:
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            type: object
+        totalCount:
+          type: number
+    DbMixinFindList:
+      type: array
+      items:
+        type: object
+    Item:
+      type: object
+    OpenAPIModel:
+      type: object
+      properties:
+        openapi:
+          example: 3.0.3
+          type: string
+          description: OpenAPI version
+        info:
+          type: object
+          properties:
+            description:
+              type: string
+        tags:
+          type: array
+          items:
+            type: string
+      required:
+        - openapi
+    v1.circuits.addingPathElements:
+      type: object
+      properties:
+        circuitId:
+          example: ''
+          type: string
+        inventoryId:
+          example: ''
+          type: string
+        elementType:
+          example: ''
+          type: string
+        clientId:
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+      required:
+        - circuitId
+        - inventoryId
+        - elementType
+        - clientId
+        - resourceType
+    v1.resource.getIncludedResourceWithValues:
+      type: object
+      properties: {}
+    v1.circuits.updateCircuit:
+      type: object
+      properties:
+        resCtgId:
+          example: ''
+          type: string
+        clientId:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        type:
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.circuits.updateCircuit.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.circuits.updateCircuit.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+    v1.circuits.updateCircuit.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.circuits.updateCircuit.includedResource.resource
+    v1.circuits.updateCircuit.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceCharacteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.circuits.updateCircuit.includedResource.resource.resourceCharacteristic
+    v1.circuits.updateCircuit.includedResource.resource.resourceCharacteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.circuits.updateCircuit.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.circuits.updateCircuit.relatedParty.partyOrPartyRole
+    v1.circuits.updateCircuit.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+    v1.devices.updateDevice:
+      type: object
+      properties:
+        resCtgId:
+          example: ''
+          type: string
+        clientId:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        type:
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.devices.updateDevice.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.devices.updateDevice.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+    v1.devices.updateDevice.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.devices.updateDevice.includedResource.resource
+    v1.devices.updateDevice.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceCharacteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.devices.updateDevice.includedResource.resource.resourceCharacteristic
+    v1.devices.updateDevice.includedResource.resource.resourceCharacteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.devices.updateDevice.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.devices.updateDevice.relatedParty.partyOrPartyRole
+    v1.devices.updateDevice.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+    v1.location.updateLocation:
+      type: object
+      properties:
+        resCtgId:
+          example: ''
+          type: string
+        clientId:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        spec:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.location.updateLocation.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.location.updateLocation.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+    v1.location.updateLocation.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.location.updateLocation.includedResource.resource
+    v1.location.updateLocation.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceCharacteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.location.updateLocation.includedResource.resource.resourceCharacteristic
+    v1.location.updateLocation.includedResource.resource.resourceCharacteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.location.updateLocation.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.location.updateLocation.relatedParty.partyOrPartyRole
+    v1.location.updateLocation.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+    v1.racks.updateRack:
+      type: object
+      properties:
+        resCtgId:
+          example: ''
+          type: string
+        clientId:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        type:
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        spec:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.racks.updateRack.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.racks.updateRack.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+    v1.racks.updateRack.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.racks.updateRack.includedResource.resource'
+    v1.racks.updateRack.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceCharacteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.racks.updateRack.includedResource.resource.resourceCharacteristic
+    v1.racks.updateRack.includedResource.resource.resourceCharacteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.racks.updateRack.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.racks.updateRack.relatedParty.partyOrPartyRole
+    v1.racks.updateRack.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+    v1.sites.updateSite:
+      type: object
+      properties:
+        resCtgId:
+          example: ''
+          type: string
+        clientId:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        type:
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        spec:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.sites.updateSite.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.sites.updateSite.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+    v1.sites.updateSite.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.sites.updateSite.includedResource.resource'
+    v1.sites.updateSite.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceCharacteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.sites.updateSite.includedResource.resource.resourceCharacteristic
+    v1.sites.updateSite.includedResource.resource.resourceCharacteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.sites.updateSite.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.sites.updateSite.relatedParty.partyOrPartyRole
+    v1.sites.updateSite.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+    v1.circuits.createCircuit:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.circuits.createCircuit.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.circuits.createCircuit.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+    v1.circuits.createCircuit.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.circuits.createCircuit.includedResource.resource
+    v1.circuits.createCircuit.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceCharacteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.circuits.createCircuit.includedResource.resource.resourceCharacteristic
+    v1.circuits.createCircuit.includedResource.resource.resourceCharacteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.circuits.createCircuit.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.circuits.createCircuit.relatedParty.partyOrPartyRole
+    v1.circuits.createCircuit.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+    v1.devices.createDevice:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.devices.createDevice.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.devices.createDevice.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+    v1.devices.createDevice.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.devices.createDevice.includedResource.resource
+    v1.devices.createDevice.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceCharacteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.devices.createDevice.includedResource.resource.resourceCharacteristic
+    v1.devices.createDevice.includedResource.resource.resourceCharacteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.devices.createDevice.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.devices.createDevice.relatedParty.partyOrPartyRole
+    v1.devices.createDevice.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+    v1.location.createLocation:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.location.createLocation.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.location.createLocation.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+    v1.location.createLocation.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.location.createLocation.includedResource.resource
+    v1.location.createLocation.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceCharacteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.location.createLocation.includedResource.resource.resourceCharacteristic
+    v1.location.createLocation.includedResource.resource.resourceCharacteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.location.createLocation.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.location.createLocation.relatedParty.partyOrPartyRole
+    v1.location.createLocation.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+    v1.racks.createRack:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.racks.createRack.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.racks.createRack.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+        siteInvId:
+          example: ''
+          type: string
+    v1.racks.createRack.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.racks.createRack.includedResource.resource'
+    v1.racks.createRack.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        characteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.racks.createRack.includedResource.resource.characteristic
+    v1.racks.createRack.includedResource.resource.characteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.racks.createRack.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.racks.createRack.relatedParty.partyOrPartyRole
+    v1.racks.createRack.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+    v1.sites.createSite:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        displayName:
+          example: ''
+          type: string
+        href:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceType:
+          example: ''
+          type: string
+        category:
+          example: ''
+          type: string
+        description:
+          example: ''
+          type: string
+        resourceStatus:
+          example: ''
+          type: string
+        administrativeState:
+          example: locked
+          type: string
+          enum:
+            - locked
+            - unlocked
+            - shuttingDown
+        operationalState:
+          example: enabled
+          type: string
+          enum:
+            - enabled
+            - disabled
+        usageState:
+          example: active
+          type: string
+          enum:
+            - active
+            - inactive
+        resourceCharacteristic:
+          example: ''
+          type: string
+        includedResource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.sites.createSite.includedResource'
+        relatedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.sites.createSite.relatedParty'
+        featureSpecification:
+          type: array
+          items:
+            example: ''
+            type: string
+    v1.sites.createSite.includedResource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.sites.createSite.includedResource.resource'
+    v1.sites.createSite.includedResource.resource:
+      type: object
+      properties:
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        resourceCharacteristic:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/v1.sites.createSite.includedResource.resource.resourceCharacteristic
+    v1.sites.createSite.includedResource.resource.resourceCharacteristic:
+      type: object
+      properties:
+        name:
+          example: ''
+          type: string
+        '@type':
+          example: ''
+          type: string
+        value:
+          example: ''
+          type: string
+        valueType:
+          example: ''
+          type: string
+    v1.sites.createSite.relatedParty:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        role:
+          example: ''
+          type: string
+        partyOrPartyRole:
+          $ref: >-
+            #/components/schemas/v1.sites.createSite.relatedParty.partyOrPartyRole
+    v1.sites.createSite.relatedParty.partyOrPartyRole:
+      type: object
+      properties:
+        '@type':
+          example: ''
+          type: string
+        '@referredType':
+          example: ''
+          type: string
+        id:
+          example: ''
+          type: string
+        name:
+          example: ''
+          type: string
+  responses:
+    ServerError:
+      description: 'Server errors: 500, 501, 400, 404 and etc...'
+      content:
+        application/json:
+          schema:
+            type: object
+            example:
+              name: MoleculerClientError
+              message: Server error message
+              code: 500
+    UnauthorizedError:
+      description: Need auth
+      content:
+        application/json:
+          schema:
+            type: object
+            example:
+              name: MoleculerClientError
+              message: Unauth error message
+              code: 401
+    ValidationError:
+      description: Fields invalid
+      content:
+        application/json:
+          schema:
+            type: object
+            example:
+              name: MoleculerClientError
+              message: Error message
+              code: 422
+              data:
+                - name: fieldName
+                  message: Field invalid
+                - name: arrayField[0].fieldName
+                  message: Whats wrong
+                - name: object.fieldName
+                  message: Whats wrong
+    ReturnedData:
+      description: ''
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/DbMixinList'
+              - $ref: '#/components/schemas/DbMixinFindList'
+              - $ref: '#/components/schemas/Item'
+    FileNotExist:
+      description: File not exist
+      content:
+        application/json:
+          schema:
+            type: object
+            example:
+              name: MoleculerClientError
+              message: File missing in the request
+              code: 400
+    FileTooBig:
+      description: File too big
+      content:
+        application/json:
+          schema:
+            type: object
+            example:
+              name: PayloadTooLarge
+              message: Payload too large
+              code: 413
+              type: PAYLOAD_TOO_LARGE
+              data:
+                fieldname: file
+                filename: 4b2005c0b8.png
+                encoding: 7bit
+                mimetype: image/png
+openapi: 3.0.3
+paths:
+  /api/v1/circuits/pathElements/allResources:
+    get:
+      summary: |-
+        Fetches all resource items under a specific path element category
+      tags:
+        - v1.circuits
+      parameters:
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.
+        - name: categoryId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Identifier for the category to filter resources.
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/circuits/pathElements/categories:
+    get:
+      summary: |-
+        Retrieves all available categories for circuit path elements
+      tags:
+        - v1.circuits
+      parameters:
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/circuits/pathElements/{id}:
+    get:
+      summary: |-
+        Returns all path elements associated with a specified circuit
+      tags:
+        - v1.circuits
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the Circuit   
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/racks/elevation/{id}:
+    get:
+      summary: |-
+        (v1.racks.getElevationDetails)
+                    [autoAlias]
+      tags:
+        - v1.racks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/resource/{id}/validate-delete:
+    get:
+      summary: |-
+        Validates whether a resource can be safely deleted by checking if it has any dependent or child resources associated with it
+      tags:
+        - v1.resource
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the resource
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/categories/count:
+    get:
+      summary: |-
+        Fetches the count value of catalog categories
+      tags:
+        - v1.categories
+      parameters:
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/categories/resource-specifications:
+    get:
+      summary: |-
+        Get specifications for a resource under a specific category and catalog
+      tags:
+        - v1.categories
+      parameters:
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.
+        - name: resSpecId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Unique identifier for the specification of the resource.  
+        - name: categoryId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Unique identifier for the category of the resource.
+        - name: catalogId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Unique identifier for the catalog.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/circuits/add-path-elements:
+    post:
+      summary: |-
+        Adds one or more path elements to an existing circuit
+      tags:
+        - v1.circuits
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.circuits.addingPathElements'
+  /api/v1/resource/get-all:
+    get:
+      summary: |-
+        When a specific catalog (for eg: site, rack, chassis etc.) is selected from the sidebar of the NEM 2.0, the get all resources API is called out to bring out a list of all the resources created
+      tags:
+        - v1.resource
+      parameters:
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.
+        - name: resSpecId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Unique identifier for the specification of the resource.  
+        - name: categoryId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Unique identifier for the category of the resource.
+        - name: catalogId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Unique identifier for the catalog.
+        - name: resType
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Type of resource.
+        - name: connectedResourceId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Unique identifier for the connected resource.  
+        - name: masterData
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Denotes the source of the data.
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/resource/get-connected-resources:
+    get:
+      summary: |-
+        Fetch resources that are related or connected to another resource
+      tags:
+        - v1.resource
+      parameters:
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.
+        - name: resType
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Type of resource.
+        - name: connectedResourceId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Unique identifier for the connected resource.
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/resource/get-included-resource-with-values:
+    post:
+      summary: |-
+        Fetch nested or included resource definitions along with their updated values
+      tags:
+        - v1.resource
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.resource.getIncludedResourceWithValues'
+  /api/v1/resource/search:
+    get:
+      summary: |-
+        Fetch nested or included resource definitions along with their updated values
+      tags:
+        - v1.resource
+      parameters:
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Name or ID of the resource to be retrieved
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/circuits/{id}:
+    get:
+      summary: |-
+        Fetches detailed information about a specific circuit by its ID
+      tags:
+        - v1.circuits
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the circuit  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.    
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+    put:
+      summary: |-
+        Updates a specified circuit's attributes
+      tags:
+        - v1.circuits
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the circuit  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.circuits.updateCircuit'
+    delete:
+      summary: |-
+        Deletes a specific circuit from the system
+      tags:
+        - v1.circuits
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the circuit  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/devices/{id}:
+    get:
+      summary: |-
+        Retrieves detailed information about a specific chassis, card, or port using its unique ID
+      tags:
+        - v1.devices
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the device  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+    put:
+      summary: |-
+        Updates information for an existing device
+      tags:
+        - v1.devices
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the device  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.devices.updateDevice'
+    delete:
+      summary: |-
+        Removes a specific device (chassis, card, or port) from the system
+      tags:
+        - v1.devices
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the device  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/location/{id}:
+    get:
+      summary: |-
+        Fetches the details of a location when ID is specified
+      tags:
+        - v1.location
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the location  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.   
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/racks/{id}:
+    get:
+      summary: |-
+        Retrieves the details of a specific rack using its unique identifier
+      tags:
+        - v1.racks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the rack  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+    put:
+      summary: |-
+        Updates an existing rack’s information
+      tags:
+        - v1.racks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the rack  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.racks.updateRack'
+    delete:
+      summary: |-
+        Deletes a rack from the system using its ID
+      tags:
+        - v1.racks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the rack  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/sites/{id}:
+    get:
+      summary: |-
+        Fetches the details of a specific site using its unique ID
+      tags:
+        - v1.sites
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the site  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+    put:
+      summary: |-
+        Updates the details of an existing site using its ID
+      tags:
+        - v1.sites
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the site  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.sites.updateSite'
+    delete:
+      summary: |-
+        Deletes a site from the system by its unique ID
+      tags:
+        - v1.sites
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the site  
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request.  
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/categories:
+    get:
+      summary: |-
+        Retrieve all available catalog categories
+      tags:
+        - v1.categories
+      parameters:
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request. 
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/circuits:
+    post:
+      summary: |-
+        Creates a new circuit in the system
+      tags:
+        - v1.circuits
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.circuits.createCircuit'
+  /api/v1/devices:
+    post:
+      summary: |-
+        Creates a new chassis, card, or port in the system
+      tags:
+        - v1.devices
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.devices.createDevice'
+  /api/v1/entityUrl:
+    get:
+      summary: |-
+        Fetches list of all URLs
+      tags:
+        - v1.entityUrl
+      parameters:
+        - name: key
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Type of the resource
+        - name: entityType
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Denotes the action to be taken upon the resource
+        - name: clientId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the client making the request. 
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+  /api/v1/location:
+    post:
+      summary: |-
+        Creates a new location in the system
+      tags:
+        - v1.location
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.location.createLocation'
+  /api/v1/racks:
+    post:
+      summary: |-
+        Creates a new rack in the system
+      tags:
+        - v1.racks
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.racks.createRack'
+  /api/v1/sites:
+    post:
+      summary: |-
+        Creates a new Site record in the system
+      tags:
+        - v1.sites
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ReturnedData'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        default:
+          $ref: '#/components/responses/ServerError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.sites.createSite'
+
